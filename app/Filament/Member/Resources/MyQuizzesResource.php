@@ -2,17 +2,20 @@
 
 namespace App\Filament\Member\Resources;
 
-use App\Filament\Member\Resources\MyQuizzesResource\Pages;
+use Filament\Tables;
+use Filament\Forms\Form;
 use App\Models\MyQuizzes;
 use App\Models\QuizHeader;
-use Filament\Forms\Form;
-use Filament\Tables\Actions\Action;
-use Filament\Resources\Resource;
-use Filament\Support\Enums\Alignment;
-use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
+use Filament\Support\Enums\Alignment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Actions\DeleteBulkAction;
+use App\Filament\Member\Resources\MyQuizzesResource\Pages;
+use Filament\Tables\Actions\BulkAction;
+use Illuminate\Database\Eloquent\Collection;
 
 class MyQuizzesResource extends Resource
 {
@@ -56,6 +59,7 @@ class MyQuizzesResource extends Resource
             Tables\Columns\TextColumn::make('certification.name')
                 ->numeric()
                 ->sortable()
+                ->label('GS Course')
                 ->alignment(Alignment::Start),
             Tables\Columns\TextColumn::make('score')
                 ->numeric()
@@ -76,8 +80,6 @@ class MyQuizzesResource extends Resource
                     'Failed' => 'danger',
                 })
                 ->tooltip('Scores above 70% are considered passed!'),
-            Tables\Columns\TextColumn::make('domains')
-                ->badge(),
             Tables\Columns\IconColumn::make('learningmode')
                 ->boolean()
                 ->grow(false),
@@ -87,14 +89,7 @@ class MyQuizzesResource extends Resource
             Tables\Columns\TextColumn::make('section.name')
                 ->numeric()
                 ->sortable()
-                ->toggleable(isToggledHiddenByDefault: true),
-            Tables\Columns\TextColumn::make('created_at')
-                ->dateTime()
-                ->sortable()
-                ->toggleable(isToggledHiddenByDefault: true),
-            Tables\Columns\TextColumn::make('updated_at')
-                ->dateTime()
-                ->sortable()
+                ->label('Course Title')
                 ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

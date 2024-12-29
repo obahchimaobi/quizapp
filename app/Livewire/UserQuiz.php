@@ -2,29 +2,31 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use App\Models\Answer;
-use App\Models\Certification;
-use App\Models\Domain;
-use App\Models\Question;
+use Closure;
 use App\Models\Quiz;
-use App\Models\QuizHeader;
 use App\Models\Quote;
-use Filament\Forms\Components\CheckboxList;
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Radio;
-use Filament\Forms\Components\Section as ComponentsSection;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
-use Filament\Notifications\Notification;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use Filament\Forms\Concerns\InteractsWithForms;
+use App\Models\Answer;
+use App\Models\Domain;
 use Filament\Forms\Get;
-use Filament\Forms\Components\Select;
+use Livewire\Component;
+use App\Models\Question;
+use Filament\Forms\Form;
+use App\Models\QuizHeader;
+use App\Models\Certification;
 use Illuminate\Support\Collection;
-use Filament\Forms\Components\Wizard;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Facades\Log;
+use Filament\Forms\Components\Radio;
+use Illuminate\Support\Facades\Auth;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Wizard;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
+use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Components\Section as ComponentsSection;
 
 class UserQuiz extends Component implements HasForms
 {
@@ -181,17 +183,17 @@ class UserQuiz extends Component implements HasForms
             ComponentsSection::make('Quiz Configuration')
                 ->schema([
                     Wizard::make([
-                        Wizard\Step::make('Certification')
+                        Wizard\Step::make('GS Course')
                             ->schema([
                                 Select::make('certification_id')
-                                ->label('Certification')
+                                ->label('GS Course Code')
                                 ->options(Certification::query()->where('is_active', true)->whereIn('id',Auth::user()
                                     ->certifications_owned()->pluck('id'))->pluck('name', 'id'))
                                     ->required()
                                     ->live()
                                     ->native(false),
                                 Select::make('domains')
-                                    ->label('Domains to Include')
+                                    ->label('Course Title')
                                     ->options(fn (Get $get): Collection => Domain::query()
                                         ->where('certification_id', $get('certification_id'))
                                         ->pluck('name', 'id'))
@@ -216,18 +218,35 @@ class UserQuiz extends Component implements HasForms
                                 ])->columns(5)
                                 ->required(),
                             ]),
-                        Wizard\Step::make('Levels')
+                        Wizard\Step::make('Number of Questions')
                             ->schema([
-                                Select::make('currentQuizSize')
-                                    ->label('Quiz Size')
-                                    ->options([
-                                        5 => '5',
-                                        10 => '10',
-                                        15 => '15',
-                                    ])
-                                    ->native(false),
+                                // Select::make('currentQuizSize')
+                                //     ->label('Number of questions')
+                                //     ->options([
+                                //         5 => '5',
+                                //         10 => '10',
+                                //         15 => '15',
+                                //     ])
+                                //     ->native(false)
+                                //     ->required()
+                                //     ->validationMessages([
+                                //         'required' => 'Invalid number of questions'
+                                //     ])
+                                //     ->rule('in:5,10,15'),
+
+                                TextInput::make('currentQuizSize')
+                                        ->label('Number of questions')
+                                        ->required()
+                                        ->rules([
+                                            fn (): Closure => function (string $attribute, $value, Closure $fail) {
+                                                if ($value < '1') {
+                                                    $fail('The :attribute is invalid.');
+                                                }
+                                            },
+                                        ])
                             ]),
-                        ])->submitAction(new HtmlString('<button class="btn-primary" type="submit">Start Quiz</button>')),
+                        ])
+                        ->submitAction(new HtmlString('<button class="btn-primary" type="submit">Start Quiz</button>')),
                 ]),
         ])
         ->model(QuizHeader::class);
