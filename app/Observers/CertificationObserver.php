@@ -25,7 +25,7 @@ class CertificationObserver
                               ->get();
 
         foreach ($this->admins as $admin){
-            $admin->notify(new CertificationCreated($certification));
+            // $admin->notify(new CertificationCreated($certification));
 
             Notification::make()
             ->success()
@@ -62,7 +62,7 @@ class CertificationObserver
                               ->get();
 
         foreach ($this->admins as $admin){
-            $admin->notify(new CertificationCreated($certification));
+            // $admin->notify(new CertificationCreated($certification));
 
             Notification::make()
             ->success()

@@ -26,7 +26,7 @@ class SectionObserver
                               ->get();
 
         foreach ($this->admins as $admin){
-            $admin->notify(new SectionCreated($section));
+            // $admin->notify(new SectionCreated($section));
 
             Notification::make()
             ->success()
@@ -63,7 +63,7 @@ class SectionObserver
                               ->get();
 
         foreach ($this->admins as $admin){
-            $admin->notify(new SectionDeleted($section));
+            // $admin->notify(new SectionDeleted($section));
 
             Notification::make()
             ->success()

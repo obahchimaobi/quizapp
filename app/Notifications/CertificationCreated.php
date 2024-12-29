@@ -38,9 +38,9 @@ class CertificationCreated extends Notification
     {
         $url = CertificationResource::getUrl('edit', ['record' => $this->certification->id]);
         return (new MailMessage)
-                    ->subject('An new certification created!')
+                    ->subject('A new certification created!')
                     ->greeting('Good Day!')
-                    ->line('An new certification named **'.$this->certification->name.'** has been created')
+                    ->line('A new certification named **'.$this->certification->name.'** has been created')
                     ->action('Review Certification', $url)
                     ->line('Thank you and have a great day!');
     }

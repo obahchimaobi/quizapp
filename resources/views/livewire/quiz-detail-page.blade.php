@@ -1,11 +1,11 @@
 <div>
-    <div class="bg-white border-2 border-gray-300 shadow overflow-hidden sm:rounded-lg">
+    <div class="bg-neutral-900 border-2 border-gray-300 shadow overflow-hidden sm:rounded-lg">
         <div class="px-4 py-5 sm:px-6">
-            <h1 class="text-xl leading-6 font-medium text-gray-900">
+            <h1 class="text-xl leading-6 font-medium text-gray-900 dark:text-white">
                 Quiz Information
             </h1>
             <p class="mt-1 max-w-2xl text-sm text-gray-700">
-                You took this quiz {{$userQuizDetails->updated_at->diffForHumans()}} on <span class="text-bold bg-green-200 p-2 rounded-lg"> {{$userQuizDetails->updated_at}} </span>
+                <span class="text-gray-700 dark:text-gray-300">You took this quiz</span> {{$userQuizDetails->updated_at->diffForHumans()}} on <span class="text-bold bg-green-200 p-2 rounded-lg"> {{$userQuizDetails->updated_at}} </span>
             </p>
         </div>
         <div class="border-t border-gray-300">

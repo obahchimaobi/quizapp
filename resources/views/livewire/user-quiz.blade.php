@@ -86,7 +86,7 @@
             </p>
         </div>
     </div>
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-6">
+    <div class=" shadow overflow-hidden sm:rounded-lg mt-6">
         <div class="px-4 py-5 sm:px-6">
             <h3 class="text-lg leading-6 mb-2 font-medium text-gray-900">
                 <span class="mr-2 font-extrabold"> {{$quizQuestionCounter}}</span> {!! nl2br(e($currentQuestion->question))  !!}
