@@ -22,10 +22,10 @@ class CertificationsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'CISSP',
-                'description' => 'Certified Information Systems Security Professional CISSP',
+                'name' => 'GST 101',
+                'description' => 'General Studies. Use of English 1',
                 'is_active' => 1,
-                'details' => 'Certified Information Systems Security Professional CISSP',
+                'details' => 'General Studies. Use of English 1',
                 'user_id' => 1,
                 'section_id' => 1,
                 'created_at' => '2023-06-04 06:31:39',
@@ -34,10 +34,10 @@ class CertificationsTableSeeder extends Seeder
             1 => 
             array (
                 'id' => 2,
-                'name' => 'CCNA',
-                'description' => 'Cisco Certified Network Administrator',
+                'name' => 'GST 109',
+                'description' => 'General Studies. Basic Igbo Studies 1',
                 'is_active' => 1,
-                'details' => ' Cisco Certified Network Administrator  Cisco Certified Network Administrator',
+                'details' => 'General Studies. Basic Igbo Studies 1',
                 'user_id' => 1,
                 'section_id' => 1,
                 'created_at' => '2023-06-04 06:32:22',

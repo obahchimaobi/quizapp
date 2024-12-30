@@ -87,6 +87,7 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
+            ->spa()
             ->renderHook(
                 // This line tells us where to render it
                 'panels::body.end',
