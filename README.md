@@ -19,7 +19,6 @@ This project gave me a deep understanding of what to look for in web application
 ```
 git clone <repo>
 cd <repo>
-alias sail=./vendor/bin/sail
 
 ```
 
@@ -28,30 +27,28 @@ alias sail=./vendor/bin/sail
 ```
 cp .env.example .env
 
-composer install
+composer install (Not composer update)
 
-sail up -d
+npm install
 
-sail npm install
+npm run build
 
-sail npm run build
+php artisan migrate
 
-sail artisan migrate:fresh
+php artisan make:filament-user
 
-sail artisan make:filament-user
+php artisan db:seed
 
-sail artisan db:seed
+php artisan shield:super-admin
 
-sail artisan shield:super-admin
-
-sail artisan db:seed --class ShieldSeeder
+php artisan db:seed --class ShieldSeeder
 
 
-sail npm run dev #should be kept open if using local dev env
+npm run dev #should be kept open if using local dev env
 ```
 
 
-# Loing to admin:
+# Login to admin:
 
 http://localhost/admin/
 
