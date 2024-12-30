@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CertificationsTableSeeder::class);
         $this->call(DomainsTableSeeder::class);
         $this->call(QuestionsSeeder::class);
+        $this->call(CodeSeeder::class);
 
         }
 }
