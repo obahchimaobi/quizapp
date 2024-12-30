@@ -89,7 +89,7 @@ class Register extends AuthRegister
                     }
                 },
             ])
-            ->hint(new HtmlString('<a href="/documentation">Don\'t have a code? Buy One</a>'))
+            ->hint(new HtmlString('<a href="https://wa.link/zvrmwl">Don\'t have a code? Buy One</a>'))
             ->hintColor('primary');
     }
 }
