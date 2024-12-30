@@ -38,6 +38,12 @@ class Register extends AuthRegister
 
         $data = $this->form->getState();
 
+        $code = Codes::where('code', $data['code'])->first();
+        
+        if ($code && !$code->is_used) {
+            $code->update(['is_used' => true]);
+        }
+
         $user = $this->getUserModel()::create($data);
 
         $user->assignRole('user');
