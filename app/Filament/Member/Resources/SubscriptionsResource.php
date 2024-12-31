@@ -105,7 +105,8 @@ class SubscriptionsResource extends Resource
                         ->label('Created On')
                         ->since(),
                     Infolists\Components\TextEntry::make('updated_at')
-                        ->label('Last Updated On'),
+                        ->label('Last Updated On')
+                        ->since(),
 
                 ]);
         }

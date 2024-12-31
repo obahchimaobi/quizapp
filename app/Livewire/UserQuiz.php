@@ -191,7 +191,10 @@ class UserQuiz extends Component implements HasForms
                                     ->certifications_owned()->pluck('id'))->pluck('name', 'id'))
                                     ->required()
                                     ->live()
-                                    ->native(false),
+                                    ->native(false)
+                                    ->hint(new HtmlString('<a href="subscriptions">Can\'t find a course? Subscribe</a>'))
+                                    ->hintColor('primary'),
+                                    
                                 Select::make('domains')
                                     ->label('Course Title')
                                     ->options(fn (Get $get): Collection => Domain::query()
