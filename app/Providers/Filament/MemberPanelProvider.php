@@ -44,7 +44,7 @@ class MemberPanelProvider extends PanelProvider
                 ->hidden(fn(): bool => ! Auth::user()->is_admin)
             ])
             ->colors([
-                'primary' => Color::Blue,
+                // 'primary' => Color::Blue,
             ])
             ->breadcrumbs(false)
             ->maxContentWidth('full')
