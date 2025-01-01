@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
@@ -13,7 +12,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
 
     @livewireStyles
 </head>
@@ -48,14 +48,23 @@
 
             <!-- Button Group -->
             <div class="flex items-center gap-x-1 md:gap-x-2 ms-auto py-1 md:ps-6 md:order-3 md:col-span-3">
-                <a href="/member"
-                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl bg-white border border-gray-200 text-black hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:hover:bg-white/10 dark:text-white dark:hover:text-white dark:focus:text-white dark:focus:bg-neutral-800" wire:navigate>
-                    Sign in
-                </a>
-                <a href="/member/register" type="button"
-                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-transparent bg-[#ff0] text-black focus:outline-none transition disabled:opacity-50 disabled:pointer-events-none" wire:navigate>
-                    Sign up
-                </a>
+                @guest
+                    <a href="/member"
+                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl bg-white border border-gray-200 text-black hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:hover:bg-white/10 dark:text-white dark:hover:text-white dark:focus:text-white dark:focus:bg-neutral-800">
+                        Sign in
+                    </a>
+                    <a href="/member/register" type="button"
+                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-transparent bg-[#ff0] text-black focus:outline-none transition disabled:opacity-50 disabled:pointer-events-none">
+                        Sign up
+                    </a>
+                @endguest
+
+                @auth
+                    <a href="/member" type="button"
+                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl bg-white border border-gray-200 text-black hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:hover:bg-white/10 dark:text-white dark:hover:text-white dark:focus:text-white dark:focus:bg-neutral-800">
+                        Dashboard
+                    </a>
+                @endauth
 
                 <div class="md:hidden">
                     <button type="button"
@@ -249,9 +258,9 @@
                     <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-[#ff0] text-black dark:text-neutral-800 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
                         href="#">
                         Get started
-                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
+                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m9 18 6-6-6-6" />
                         </svg>
                     </a>
@@ -260,7 +269,8 @@
             <!-- End Col -->
 
             <div class="lg:col-span-4 mt-10 lg:mt-0 flex justify-end">
-                <img class="md:w-[30rem] w-full rounded-xl" src="{{ asset('images/study-rewards.png') }}" alt="Hero Image">
+                <img class="md:w-[30rem] w-full rounded-xl" src="{{ asset('images/study-rewards.png') }}"
+                    alt="Hero Image">
             </div>
             <!-- End Col -->
         </div>
@@ -291,9 +301,9 @@
                             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
                         </svg> --}}
 
-                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                         </svg>
@@ -341,9 +351,9 @@
                     <!-- Icon -->
                     <span
                         class="shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-200">
-                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
                         </svg>
@@ -366,9 +376,9 @@
                     <!-- Icon -->
                     <span
                         class="shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-200">
-                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
                         </svg>
@@ -430,7 +440,8 @@
                             class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
                             role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one">
                             <p class="text-gray-600 dark:text-neutral-400">
-                                Each quiz consists of [X] questions. The number of questions may vary depending on the quiz
+                                Each quiz consists of [X] questions. The number of questions may vary depending on the
+                                quiz
                                 settings or category.
                             </p>
                         </div>
@@ -439,7 +450,8 @@
                     <div class="hs-accordion pt-6 pb-3" id="hs-basic-with-title-and-arrow-stretched-heading-two">
                         <button
                             class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
-                            aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-two">
+                            aria-expanded="false"
+                            aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-two">
                             Can I pause and resume the quiz?
                             <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -458,7 +470,8 @@
                             class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                             role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-two">
                             <p class="text-gray-600 dark:text-neutral-400">
-                                Currently, our quizzes are timed and cannot be paused once started. Be sure to complete the
+                                Currently, our quizzes are timed and cannot be paused once started. Be sure to complete
+                                the
                                 quiz in one go.
                             </p>
                         </div>
@@ -467,7 +480,8 @@
                     <div class="hs-accordion pt-6 pb-3" id="hs-basic-with-title-and-arrow-stretched-heading-three">
                         <button
                             class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
-                            aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-three">
+                            aria-expanded="false"
+                            aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-three">
                             Can I retake a quiz?
                             <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -495,7 +509,8 @@
                     <div class="hs-accordion pt-6 pb-3" id="hs-basic-with-title-and-arrow-stretched-heading-four">
                         <button
                             class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
-                            aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-four">
+                            aria-expanded="false"
+                            aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-four">
                             How can I view my previous quiz results?
                             <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -514,7 +529,8 @@
                             class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                             role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-four">
                             <p class="text-gray-600 dark:text-neutral-400">
-                                If you have an account, you can view your past quiz results in your profile section under
+                                If you have an account, you can view your past quiz results in your profile section
+                                under
                                 "My Quizzes" or "Quiz History."
                             </p>
                         </div>
@@ -523,7 +539,8 @@
                     <div class="hs-accordion pt-6 pb-3" id="hs-basic-with-title-and-arrow-stretched-heading-five">
                         <button
                             class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
-                            aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-five">
+                            aria-expanded="false"
+                            aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-five">
                             Can I share my quiz results with others?
                             <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -542,7 +559,8 @@
                             class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                             role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-five">
                             <p class="text-gray-600 dark:text-neutral-400">
-                                Yes! After completing a quiz, you can share your results on social media or with friends via
+                                Yes! After completing a quiz, you can share your results on social media or with friends
+                                via
                                 a shareable link.
                             </p>
                         </div>
@@ -551,7 +569,8 @@
                     <div class="hs-accordion pt-6 pb-3" id="hs-basic-with-title-and-arrow-stretched-heading-six">
                         <button
                             class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
-                            aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-six">
+                            aria-expanded="false"
+                            aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-six">
                             Can I change my answers during the quiz?
                             <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -588,7 +607,8 @@
         <div class="max-w-[80rem] px-4 xl:px-0 py-10 lg:py-20 mx-auto" id="contact-us">
             <!-- Title -->
             <div class="max-w-3xl mb-10 lg:mb-14">
-                <h2 class="text-neutral-800 dark:text-white font-semibold text-2xl md:text-4xl md:leading-tight">Contact us
+                <h2 class="text-neutral-800 dark:text-white font-semibold text-2xl md:text-4xl md:leading-tight">
+                    Contact us
                 </h2>
                 <p class="mt-1 text-neutral-400">Whatever your goal - we will get you there.</p>
             </div>
@@ -737,9 +757,9 @@
                 <div class="space-y-14">
                     <!-- Item -->
                     <div class="flex gap-x-5">
-                        <svg class="shrink-0 size-6 text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="shrink-0 size-6 text-neutral-500" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                             <circle cx="12" cy="10" r="3" />
                         </svg>
@@ -756,9 +776,9 @@
 
                     <!-- Item -->
                     <div class="flex gap-x-5">
-                        <svg class="shrink-0 size-6 text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="shrink-0 size-6 text-neutral-500" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path
                                 d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z" />
                             <path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10" />
@@ -776,9 +796,9 @@
 
                     <!-- Item -->
                     <div class="flex gap-x-5">
-                        <svg class="shrink-0 size-6 text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="shrink-0 size-6 text-neutral-500" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m3 11 18-5v12L3 14v-3z" />
                             <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
                         </svg>

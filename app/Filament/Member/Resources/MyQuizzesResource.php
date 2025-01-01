@@ -23,6 +23,8 @@ class MyQuizzesResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-trophy';
 
+    protected static ?string $activeNavigationIcon = 'heroicon-s-trophy';
+
     public static function getNavigationBadge(): ?string
     {
         return QuizHeader::where('user_id',auth()->id())->count();
@@ -32,7 +34,9 @@ class MyQuizzesResource extends Resource
     {
         return static::getModel()::count() < 2 ? 'warning' : 'primary';
     }
+
     protected static ?int $navigationSort = 2;
+    
     public static function form(Form $form): Form
     {
         return $form

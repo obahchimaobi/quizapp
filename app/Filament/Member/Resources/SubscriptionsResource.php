@@ -20,9 +20,11 @@ class SubscriptionsResource extends Resource
 {
     protected static ?string $model = Subscription::class;
 
-    protected static ?string $title = 'My Subscriptions';
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
-    protected static ?string $navigationIcon = 'heroicon-o-bell-alert';
+    protected static ?string $activeNavigationIcon = 'heroicon-s-book-open';
+
+    protected static ?string $navigationLabel = 'Course Activation';
 
     protected static ?int $navigationSort = 3;
 
@@ -58,8 +60,8 @@ class SubscriptionsResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\Action::make('subscribe')
-                ->label(fn($record) :string => auth()->user()->certifications_owned()->where('id', $record->id)->exists() ? 'Unsubscribe' : 'Subscribe')
+                Tables\Actions\Action::make('activate')
+                ->label(fn($record) :string => auth()->user()->certifications_owned()->where('id', $record->id)->exists() ? 'Deactivate' : 'Activate')
                 ->requiresConfirmation()
                 ->button()
                 ->icon('heroicon-m-star')
@@ -68,16 +70,16 @@ class SubscriptionsResource extends Resource
                         auth()->user()->certifications_owned()->detach($record->id);
                         Notification::make()
                             ->danger()
-                            ->title('Unsubscribed Successfully!')
-                            ->body('You have unsubscribe from ' . $record->name . ' certification successfully.')
+                            ->title('Deactivation Successful!')
+                            ->body('You have successfully deactivated ' . $record->name)
                             ->send();
                     }
                     else{
                         auth()->user()->certifications_owned()->attach($record->id);
                         Notification::make()
                         ->success()
-                        ->title('Subscribed Successfully!')
-                        ->body('You have subscribed to ' . $record->name . ' certification successfully.')
+                        ->title('Activation Successful!')
+                        ->body('You have successfully activated ' . $record->name)
                         ->send();
                     }
                 }),

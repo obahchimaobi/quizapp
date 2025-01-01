@@ -11,6 +11,8 @@ class ListSubscriptions extends ListRecords
 {
     protected static string $resource = SubscriptionsResource::class;
 
+    protected static ?string $title = 'Course Activation';
+
 
     protected function getHeaderActions(): array
     {

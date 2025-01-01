@@ -192,7 +192,7 @@ class UserQuiz extends Component implements HasForms
                                     ->required()
                                     ->live()
                                     ->native(false)
-                                    ->hint(new HtmlString('<a href="subscriptions">Can\'t find a course? Subscribe</a>'))
+                                    ->hint(new HtmlString('<a href="subscriptions" wire:navigate>Can\'t find a course? Activate a course</a>'))
                                     ->hintColor('primary'),
                                     
                                 Select::make('domains')
