@@ -86,7 +86,6 @@ class MemberPanelProvider extends PanelProvider
                     ),
 
             ])
-            ->spa()
             ->databaseNotifications()
             ->authMiddleware([
                 Authenticate::class,
